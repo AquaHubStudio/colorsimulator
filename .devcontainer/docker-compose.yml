@@ -1,0 +1,20 @@
+version: "3.7"
+services:
+    app:
+        container_name: ah_colorsimulator_app
+        build:
+            context: ..
+            dockerfile: .devcontainer/Dockerfile
+        environment:
+            - APP_ENV=local
+            - APP_DEBUG=true
+        volumes:
+            - ..:/workspace:cached
+            - vendor:/workspace/vendor:cached
+            - ${HOME}${USERPROFILE:-}/.ssh:/root/.ssh
+            - ${HOME}${USERPROFILE:-}/.gitconfig:/root/.gitconfig
+            - ${HOME}${USERPROFILE:-}/.gitignore_global:/root/.gitignore_global
+        command: sleep infinity
+
+volumes:
+    vendor: null
